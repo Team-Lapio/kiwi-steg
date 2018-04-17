@@ -2,8 +2,8 @@
 
 **kiwi-steg** is a simple image manipulation tool. This project was first planned for creating our own tools to use in CTF steganography prob. You can transform pixel bits whatever you want!
 
-![main](screenshot/main.PNG)
-(https://github.com/Team-Lapio/kiwi-steg/wiki)
+![main](https://raw.githubusercontent.com/Team-Lapio/kiwi-steg/master/screenshot/main.PNG)
+
 
 ## Features
 
@@ -17,3 +17,9 @@ This will install all the packages you need to develop kiwi-steg.
 ```bash
 python setup.py install
 ```
+
+## Wikipedia
+
+We sumed up every information we need to develop this in repository Wiki. If you are interested, come and check one time!
+
+https://github.com/Team-Lapio/kiwi-steg/wiki
