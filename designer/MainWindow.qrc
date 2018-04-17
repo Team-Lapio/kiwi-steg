@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Preset">
+    <file>test.png</file>
+    <file>kiwi.ico</file>
+  </qresource>
+</RCC>
