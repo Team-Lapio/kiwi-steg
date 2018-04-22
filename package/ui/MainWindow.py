@@ -194,10 +194,9 @@ class Ui_MainWindow(object):
     def onClicked_btn_mask_XOR(self):
         qmask = (int(self.mask_red.text()), int(self.mask_green.text()), int(self.mask_blue.text()))
         self.loadImage( self.Kiwi.rgb_xor(mask=qmask) )
-        self.Kiwi.rgb_xor(mask=qmask)
 
     def onClicked_btn_randomMap(self):
-        pass
+        self.loadImage( self.Kiwi.randomMap() )
 
     def onClicked_btn_ctrlZ(self):
         self.loadImage( self.Kiwi.getPreviousImage() )

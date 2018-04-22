@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from PIL import Image
+import random as rd
 
 class BufferedImage:
     def __init__(self, imgPath=None):
@@ -92,5 +93,21 @@ class BufferedImage:
             for j in range(buf.size[1]):
                 temp = pixelmap[i,j]
                 pixelmap[i,j] = (temp[0] | mask[0], temp[1] | mask[1], temp[2] | mask[2])
+        self.__updateImage(buf)
+        return buf
+
+    def randomMap(self):
+        buf = self.__currentImage.copy()
+        pixelmap = buf.load()
+        rm, ra, rx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
+        gm, ga, gx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
+        bm, ba, bx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
+        for i in range(buf.size[0]):
+            for j in range(buf.size[1]):
+                temp = pixelmap[i,j]
+                r = (temp[0] * rm ^ rx) + ra % 255
+                g = (temp[1] * gm ^ gx) + ga % 255
+                b = (temp[2] * bm ^ bx) + ba % 255
+                pixelmap[i,j] = (r,g,b)
         self.__updateImage(buf)
         return buf
