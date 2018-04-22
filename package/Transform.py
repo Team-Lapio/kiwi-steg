@@ -45,11 +45,7 @@ class BufferedImage:
         return buf
 
     def rgb_xor(self, mask=(0xFF,0xFF,0xFF)):
-        '''This function performs XOR operation with given mask and currentImage field.
-        Each pixel of currentImage object is XORed with given mask.
-        Function returns result pillow image object through operation.
-        Internally currentImage field is setted to resulting image object,
-        and previousImage gets currentImage value.
+        '''XOR operation with mask and self.currentImage
 
         Parameter : RGB mask tuple (0~255,0~255,0~255)
 
@@ -97,6 +93,10 @@ class BufferedImage:
         return buf
 
     def randomMap(self):
+        '''Map Image with random pixels
+
+        Returns : PIL Image Object
+        '''
         buf = self.__currentImage.copy()
         pixelmap = buf.load()
         rm, ra, rx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
