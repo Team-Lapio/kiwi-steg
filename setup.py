@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(name='kiwi-steg',
-      version='0.4',
+      version='0.5',
       description='Image Steganography Sandbox',
       url='https://github.com/Team-Lapio/kiwi-steg',
       author='Team Lapio',

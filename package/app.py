@@ -3,7 +3,7 @@ from package.ui.MainWindow import Ui_MainWindow
 
 def run():
     QtWidgets.QApplication.setApplicationName('kiwi-steg')      
-    QtWidgets.QApplication.setApplicationVersion('0.4')
+    QtWidgets.QApplication.setApplicationVersion('0.5')
     
     import sys
     app = QtWidgets.QApplication(sys.argv)
