@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.connectEventHandler()
         self.enableUI(False)
-        
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
