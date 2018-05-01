@@ -4,7 +4,6 @@
 
 ![main](https://raw.githubusercontent.com/Team-Lapio/kiwi-steg/master/screenshot/main.PNG)
 
-
 ## Features
 
 - Transform bits in custom pattern
@@ -22,4 +21,4 @@ python setup.py install
 
 We sumed up every information we need to develop this in repository Wiki. If you are interested, come and check one time!
 
-https://github.com/Team-Lapio/kiwi-steg/wiki
+[Go To Wiki](https://github.com/Team-Lapio/kiwi-steg/wiki)
