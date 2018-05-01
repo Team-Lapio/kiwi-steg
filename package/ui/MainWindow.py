@@ -10,6 +10,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PIL import Image, ImageQt
 from package.Transform import BufferedImage
+from package.ui import MainWindow_rc
+
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -179,42 +181,53 @@ class Ui_MainWindow(object):
         self.mask_alpha.setEnabled(state)
 
     def loadImage(self, img):
-        self.imageLabel.setPixmap( 
-            QtGui.QPixmap.fromImage( ImageQt.ImageQt(img) )
+        self.imageLabel.setPixmap(
+            QtGui.QPixmap.fromImage(ImageQt.ImageQt(img))
         )
 
     def onClicked_btn_mask_AND(self):
-        qmask = (int(self.mask_red.text()), int(self.mask_green.text()), int(self.mask_blue.text()))   
-        self.loadImage( self.Kiwi.rgb_and(mask=qmask) )
+        qmask = (
+            int(self.mask_red.text()),
+            int(self.mask_green.text()),
+            int(self.mask_blue.text()))
+        self.loadImage(self.Kiwi.rgb_and(mask=qmask))
 
     def onClicked_btn_mask_OR(self):
-        qmask = (int(self.mask_red.text()), int(self.mask_green.text()), int(self.mask_blue.text()))
-        self.loadImage( self.Kiwi.rgb_or(mask=qmask) )
+        qmask = (
+            int(self.mask_red.text()),
+            int(self.mask_green.text()),
+            int(self.mask_blue.text()))
+        self.loadImage(self.Kiwi.rgb_or(mask=qmask))
 
     def onClicked_btn_mask_XOR(self):
-        qmask = (int(self.mask_red.text()), int(self.mask_green.text()), int(self.mask_blue.text()))
-        self.loadImage( self.Kiwi.rgb_xor(mask=qmask) )
+        qmask = (
+            int(self.mask_red.text()),
+            int(self.mask_green.text()),
+            int(self.mask_blue.text()))
+        self.loadImage(self.Kiwi.rgb_xor(mask=qmask))
 
     def onClicked_btn_randomMap(self):
-        self.loadImage( self.Kiwi.randomMap() )
+        self.loadImage(self.Kiwi.randomMap())
 
     def onClicked_btn_ctrlZ(self):
-        self.loadImage( self.Kiwi.getPreviousImage() )
+        self.loadImage(self.Kiwi.getPreviousImage())
 
     def onClicked_btn_return(self):
-        self.loadImage( self.Kiwi.getOriginalImage() )
+        self.loadImage(self.Kiwi.getOriginalImage())
 
     def onClicked_btn_fileOpen(self):
-        path, _filter = QFileDialog.getOpenFileName(None, "Open Image", "C:\\", "Image Files (*.png *.jpg *.bmp)");
+        path, _filter = QFileDialog.getOpenFileName(
+            None, "Open Image", "C:\\", "Image Files (*.png *.jpg *.bmp)")
         if path is not '':
             self.Kiwi.initialize(path)
-            self.loadImage( self.Kiwi.getOriginalImage() )
+            self.loadImage(self.Kiwi.getOriginalImage())
             self.enableUI(True)
         else:
             pass
 
     def onClicked_btn_fileSave(self):
-        path, _filter = QFileDialog.getSaveFileName(None, "Save Image", "C:\\", "Image Files (*.png *.jpg *.bmp)");
+        path, _filter = QFileDialog.getSaveFileName(
+            None, "Save Image", "C:\\", "Image Files (*.png *.jpg *.bmp)")
         if path is not '':
             buf = self.Kiwi.getCurrentImage()
             buf.save(path)
@@ -227,5 +240,3 @@ class Ui_MainWindow(object):
     def onClicked_btn_exit(self):
         exit()
         pass
-
-from package.ui import MainWindow_rc

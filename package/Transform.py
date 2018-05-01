@@ -2,6 +2,7 @@
 from PIL import Image
 import random as rd
 
+
 class BufferedImage:
     def __init__(self, imgPath=None):
         if imgPath is not None:
@@ -10,7 +11,7 @@ class BufferedImage:
             self.__currentImage = self.__originalImage.copy()
         else:
             self.__originalImage = None
-            self.__previousImage = None 
+            self.__previousImage = None
             self.__currentImage = None
 
     def __updateImage(self, buf):
@@ -24,7 +25,7 @@ class BufferedImage:
             return False
 
     def initialize(self, image):
-        self.__originalImage = Image.open(image) 
+        self.__originalImage = Image.open(image)
         self.__currentImage = self.__originalImage.copy()
 
     def getPreviousImage(self):
@@ -44,7 +45,7 @@ class BufferedImage:
         self.__updateImage(buf)
         return buf
 
-    def rgb_xor(self, mask=(0xFF,0xFF,0xFF)):
+    def rgb_xor(self, mask=(0xFF, 0xFF, 0xFF)):
         '''XOR operation with mask and self.currentImage
 
         Parameter : RGB mask tuple (0~255,0~255,0~255)
@@ -55,12 +56,13 @@ class BufferedImage:
         pixelmap = buf.load()
         for i in range(buf.size[0]):
             for j in range(buf.size[1]):
-                temp = pixelmap[i,j]
-                pixelmap[i,j] = (temp[0] ^ mask[0], temp[1] ^ mask[1], temp[2] ^ mask[2])
+                temp = pixelmap[i, j]
+                pixelmap[i, j] = \
+                    (temp[0] ^ mask[0], temp[1] ^ mask[1], temp[2] ^ mask[2])
         self.__updateImage(buf)
         return buf
 
-    def rgb_and(self, mask=(0x00,0x00,0x00)):
+    def rgb_and(self, mask=(0x00, 0x00, 0x00)):
         '''AND operation with mask and self.currentImage
 
         Parameter : RGB mask tuple (0~255,0~255,0~255)
@@ -71,12 +73,13 @@ class BufferedImage:
         pixelmap = buf.load()
         for i in range(buf.size[0]):
             for j in range(buf.size[1]):
-                temp = pixelmap[i,j]
-                pixelmap[i,j] = (temp[0] & mask[0], temp[1] & mask[1], temp[2] & mask[2])
+                temp = pixelmap[i, j]
+                pixelmap[i, j] = \
+                    (temp[0] & mask[0], temp[1] & mask[1], temp[2] & mask[2])
         self.__updateImage(buf)
         return buf
 
-    def rgb_or(self, mask=(0x00,0x00,0x00)):
+    def rgb_or(self, mask=(0x00, 0x00, 0x00)):
         '''OR operation with mask and self.currentImage
 
         Parameter : RGB mask tuple (0~255,0~255,0~255)
@@ -87,8 +90,9 @@ class BufferedImage:
         pixelmap = buf.load()
         for i in range(buf.size[0]):
             for j in range(buf.size[1]):
-                temp = pixelmap[i,j]
-                pixelmap[i,j] = (temp[0] | mask[0], temp[1] | mask[1], temp[2] | mask[2])
+                temp = pixelmap[i, j]
+                pixelmap[i, j] = \
+                    (temp[0] | mask[0], temp[1] | mask[1], temp[2] | mask[2])
         self.__updateImage(buf)
         return buf
 
@@ -99,15 +103,15 @@ class BufferedImage:
         '''
         buf = self.__currentImage.copy()
         pixelmap = buf.load()
-        rm, ra, rx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
-        gm, ga, gx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
-        bm, ba, bx = rd.randint(0,255), rd.randint(0,255), rd.randint(0,255)
+        rm, ra, rx = rd.randint(0, 255), rd.randint(0, 255), rd.randint(0, 255)
+        gm, ga, gx = rd.randint(0, 255), rd.randint(0, 255), rd.randint(0, 255)
+        bm, ba, bx = rd.randint(0, 255), rd.randint(0, 255), rd.randint(0, 255)
         for i in range(buf.size[0]):
             for j in range(buf.size[1]):
-                temp = pixelmap[i,j]
+                temp = pixelmap[i, j]
                 r = (temp[0] * rm ^ rx) + ra % 255
                 g = (temp[1] * gm ^ gx) + ga % 255
                 b = (temp[2] * bm ^ bx) + ba % 255
-                pixelmap[i,j] = (r,g,b)
+                pixelmap[i, j] = (r, g, b)
         self.__updateImage(buf)
         return buf
